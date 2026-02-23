@@ -1,7 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="An indie-genre themed landing page: retro, cozy, horror, and sci‑fi vibes in one showcase." />
+
+  <title>Indie Genre Showcase</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-    <h1>My Indie Game Concept</h1>
-    <p>Coming soon...</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">◆</span>
+        <div class="brand__text">
+          <span class="brand__title">Indie Genre Showcase</span>
+          <span class="brand__subtitle">Retro • Cozy • Horror • Sci‑Fi</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#genres">Genres</a>
+        <a href="#games">Featured</a>
+        <a href="#devlog">Devlog</a>
+        <a class="btn btn--ghost" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> indie-first landing page</p>
+          <h1>
+            Build worlds,
+            <span class="grad">ship small</span>,
+            iterate fast.
+          </h1>
+          <p class="lede">
+            A mixed-vibe indie theme: neon sci‑fi UI, cozy hand‑drawn warmth, and a pinch of pixel horror.
+            Use this page to present your project, dev updates, and links.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn" href="#games">Explore featured concepts</a>
+            <a class="btn btn--ghost" href="#devlog">Read the devlog</a>
+          </div>
+
+          <div class="stats" role="list" aria-label="Highlights">
+            <div class="stat" role="listitem">
+              <span class="stat__k">4</span>
+              <span class="stat__v">genre vibes</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__k">1</span>
+              <span class="stat__v">clean layout</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat__k">0</span>
+              <span class="stat__v">JS required</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="Genre sampler cards">
+          <div class="card card--retro">
+            <div class="card__top">
+              <span class="chip">Retro</span>
+              <span class="mono">CRT-01</span>
+            </div>
+            <h3>Pixel Runner</h3>
+            <p>Snappy platforming, crunchy SFX, high-score loops.</p>
+          </div>
+
+          <div class="card card--cozy">
+            <div class="card__top">
+              <span class="chip">Cozy</span>
+              <span class="mono">TEA-07</span>
+            </div>
+            <h3>Quiet Town</h3>
+            <p>Soft colors, small quests, feel-good progression.</p>
+          </div>
+
+          <div class="card card--horror">
+            <div class="card__top">
+              <span class="chip">Horror</span>
+              <span class="mono">ECHO-13</span>
+            </div>
+            <h3>Basement Signal</h3>
+            <p>Limited light, weird radio, dread you can hear.</p>
+          </div>
+
+          <div class="card card--scifi">
+            <div class="card__top">
+              <span class="chip">Sci‑Fi</span>
+              <span class="mono">NOVA-22</span>
+            </div>
+            <h3>Star Salvage</h3>
+            <p>Blueprint crafting, procedural wrecks, neon UI.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="genres" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Genre vibes</h2>
+          <p>Pick a vibe per page, or keep them mixed as a signature style.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="panel">
+            <h3><span class="badge">Retro</span> Pixel-forward</h3>
+            <p>Chunky type, scanline accents, arcade energy.</p>
+            <ul class="checklist">
+              <li>high contrast UI</li>
+              <li>tight feedback loops</li>
+              <li>speedrun-friendly design</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3><span class="badge badge--cozy">Cozy</span> Soft &amp; warm</h3>
+            <p>Friendly pacing, low stakes, satisfying rituals.</p>
+            <ul class="checklist">
+              <li>relaxing ambience</li>
+              <li>simple goals</li>
+              <li>wholesome narrative</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3><span class="badge badge--horror">Horror</span> Tension craft</h3>
+            <p>Silence, uncertainty, and a controlled lack of information.</p>
+            <ul class="checklist">
+              <li>audio-first scares</li>
+              <li>claustrophobic spaces</li>
+              <li>minimal UI, maximum mood</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3><span class="badge badge--scifi">Sci‑Fi</span> Neon systems</h3>
+            <p>Readable HUD, shiny materials, mechanical depth.</p>
+            <ul class="checklist">
+              <li>modular upgrades</li>
+              <li>systems-driven play</li>
+              <li>clean, futuristic UI</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="games" class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured concepts</h2>
+          <p>Replace these with your actual games, screenshots, and store links.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="tile">
+            <h3>Project: Lumen Alley</h3>
+            <p class="muted">Genre: stealth • neon • narrative</p>
+            <p>Hide in the glow, read the city, escape the loop.</p>
+            <div class="tile__actions">
+              <a href="#contact">Request a demo</a>
+              <a href="#devlog">Read updates</a>
+            </div>
+          </article>
+
+          <article class="tile">
+            <h3>Project: Moss &amp; Mechanisms</h3>
+            <p class="muted">Genre: cozy • crafting • exploration</p>
+            <p>Build tiny machines in an overgrown world.</p>
+            <div class="tile__actions">
+              <a href="#contact">Collab</a>
+              <a href="#devlog">Dev notes</a>
+            </div>
+          </article>
+
+          <article class="tile">
+            <h3>Project: SIGNAL//NULL</h3>
+            <p class="muted">Genre: horror • mystery • audio</p>
+            <p>Decode transmissions and decide what to believe.</p>
+            <div class="tile__actions">
+              <a href="#contact">Playtest</a>
+              <a href="#devlog">Progress</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="devlog" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Devlog</h2>
+          <p>Short posts. Clear milestones. Honest scope.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="post">
+            <h3>Week 1 — Concept locked</h3>
+            <p class="muted">What’s the core loop? What’s the smallest shippable slice?</p>
+            <p>Write your constraints here: platform, controls, session length, art style, and what you are <em>not</em> doing.</p>
+          </article>
+
+          <article class="post">
+            <h3>Week 2 — Prototype feels good</h3>
+            <p class="muted">Make the first 10 seconds fun.</p>
+            <p>Add a gif/screenshot later and link to a build.</p>
+          </article>
+
+          <article class="post">
+            <h3>Next — Playtest &amp; polish</h3>
+            <p class="muted">Collect feedback, fix the top 3 issues, ship a tiny release.</p>
+            <p>Keep scope tight and update this page as you go.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>Put your real links here (email, itch.io, Steam, socials).</p>
+        </div>
+
+        <div class="contact">
+          <div class="panel">
+            <h3>Quick links</h3>
+            <ul class="links">
+              <li><a href="https://github.com/FadhilJfr" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="#">Itch.io (add)</a></li>
+              <li><a href="#">Steam (add)</a></li>
+              <li><a href="#">Press kit (add)</a></li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Email template</h3>
+            <p class="muted">Copy/paste:</p>
+            <pre class="pre">Hi! I’d like to know more about your indie game project.
+
+What stage is it in (prototype / demo / release)?
+What platforms are you targeting?
+Do you have a build I can try?
+
+Thanks!</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>
+        <span class="mono">©</span> <span id="year">2026</span> Indie Genre Showcase — built with pure HTML/CSS.
+      </p>
+      <p class="muted">Tip: enable GitHub Pages in repo settings to publish.</p>
+    </div>
+  </footer>
 </body>
 </html>
