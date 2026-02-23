@@ -145,16 +145,19 @@ function create() {
     spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     spaceKey.on('down', handleInteraction);
     
-    // Click/Tap to move
+    // Click/Tap to move - Fixed for GitHub Pages
     this.input.on('pointerdown', (pointer) => {
         if (isDialogActive) return;
         
-        // Convert screen coordinates to world coordinates
-        const worldX = pointer.worldX;
-        const worldY = pointer.worldY;
+        // Manually calculate world coordinates from camera and pointer position
+        const cam = this.cameras.main;
+        const worldX = pointer.x + cam.scrollX;
+        const worldY = pointer.y + cam.scrollY;
         
         // Set target position
         targetPosition = { x: worldX, y: worldY };
+        
+        console.log('Click registered:', worldX, worldY);
     });
     
     // Handle window resize
