@@ -1,5 +1,5 @@
 :root {
-  --bg-color: #0a0a0c;
+  --bg-color: #5a8c44;
   --neon-green: #00E436;
   --neon-pink: #FF004D;
   --font-main: 'Press Start 2P', monospace;
@@ -15,20 +15,19 @@ body {
   image-rendering: pixelated; /* Keeps canvas art sharp */
 }
 
-/* Make the canvas fill the whole screen */
-canvas {
-  display: block;
+/* Make the game container fill the whole screen */
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
 }
 
-/* CRT Scanline Effect */
-.scanlines {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  background-size: 100% 4px, 3px 100%;
-  pointer-events: none; /* Let clicks pass through to the canvas */
-  z-index: 10;
+#game-container canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 /* On-Screen Text */
