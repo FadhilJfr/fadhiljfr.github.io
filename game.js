@@ -10,26 +10,33 @@ const dialogText = document.getElementById('dialog-text');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Game State
 let isDialogActive = false;
 
-// Player Object
+// --- ASSET LOADING ---
+const playerSprite = new Image();
+playerSprite.src = 'player.png'; // Make sure this file exists in your repo!
+
+const terminalSprite = new Image();
+terminalSprite.src = 'terminal.png'; // Make sure this file exists in your repo!
+
+// --- GAME OBJECTS ---
 const player = {
     x: canvas.width / 2,
     y: canvas.height / 2,
-    size: 30,
+    width: 48,  // Scaled up for better visibility
+    height: 48,
     speed: 5,
-    color: '#00E436' // Neon Green
+    color: '#00E436' // Fallback color
 };
 
-// Interactable Objects (The "Website Links")
+// The "Website Links" (Now rendered as terminals)
 const zones = [
-    { x: 150, y: 150, width: 60, height: 60, color: '#FF004D', title: "ABOUT_ME.TXT", text: "I am an indie dev. I build systems and break things. Currently working on a survival horror game." },
-    { x: canvas.width - 200, y: 200, width: 60, height: 60, color: '#29ADFF', title: "DEVLOG_01", text: "Week 1: Added basic movement and collision. Need to swap these colored boxes for actual pixel art sprites soon." },
-    { x: canvas.width / 2 - 30, y: canvas.height - 150, width: 60, height: 60, color: '#FFCC00', title: "GITHUB_LINK", text: "You can find my source code and other tools on my GitHub profile." }
+    { x: 150, y: 150, width: 48, height: 48, color: '#FF004D', title: "ABOUT_ME.TXT", text: "I am an indie dev. I build systems and break things." },
+    { x: canvas.width - 200, y: 200, width: 48, height: 48, color: '#29ADFF', title: "DEVLOG_01", text: "Week 1: Swapped colored squares for actual pixel art sprites." },
+    { x: canvas.width / 2 - 30, y: canvas.height - 150, width: 48, height: 48, color: '#FFCC00', title: "GITHUB_LINK", text: "Find my source code on my GitHub." }
 ];
 
-// Input handling
+// Input handling (WASD / Arrows / Space)
 const keys = { w: false, a: false, s: false, d: false, space: false };
 
 window.addEventListener('keydown', (e) => {
@@ -56,22 +63,20 @@ window.addEventListener('keyup', (e) => {
 function checkCollision(rect1, rect2) {
     return (
         rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.size > rect2.x &&
+        rect1.x + rect1.width > rect2.x &&
         rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.size > rect2.y
+        rect1.y + rect1.height > rect2.y
     );
 }
 
 // Interaction Logic
 function handleInteraction() {
     if (isDialogActive) {
-        // Close dialog
         uiLayer.classList.add('hidden');
         isDialogActive = false;
         return;
     }
 
-    // Check if player is touching any zone
     for (let zone of zones) {
         if (checkCollision(player, zone)) {
             dialogTitle.innerText = zone.title;
@@ -83,35 +88,45 @@ function handleInteraction() {
     }
 }
 
-// Update Game Logic
+// Update Physics/Movement
 function update() {
-    if (isDialogActive) return; // Stop movement while reading
+    if (isDialogActive) return;
 
     if (keys.w && player.y > 0) player.y -= player.speed;
-    if (keys.s && player.y < canvas.height - player.size) player.y += player.speed;
+    if (keys.s && player.y < canvas.height - player.height) player.y += player.speed;
     if (keys.a && player.x > 0) player.x -= player.speed;
-    if (keys.d && player.x < canvas.width - player.size) player.x += player.speed;
+    if (keys.d && player.x < canvas.width - player.width) player.x += player.speed;
 }
 
-// Draw Graphics
+// --- THE DRAWING ENGINE ---
 function draw() {
-    // Clear screen
+    // 1. Clear the screen
     ctx.fillStyle = '#0a0a0c';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw Zones (Terminals)
+    // CRITICAL: Turn off image smoothing so pixel art stays crunchy and blocky
+    ctx.imageSmoothingEnabled = false;
+
+    // 2. Draw the Terminals (Zones)
     for (let zone of zones) {
-        ctx.fillStyle = zone.color;
-        ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
-        
-        // Draw a shadow to make it look like a block
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(zone.x + 5, zone.y + 5, zone.width - 10, zone.height - 10);
+        // Check if the image successfully loaded
+        if (terminalSprite.complete && terminalSprite.naturalHeight !== 0) {
+            ctx.drawImage(terminalSprite, zone.x, zone.y, zone.width, zone.height);
+        } else {
+            // Fallback: draw square if image is missing
+            ctx.fillStyle = zone.color;
+            ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
+        }
     }
 
-    // Draw Player
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.size, player.size);
+    // 3. Draw the Player
+    if (playerSprite.complete && playerSprite.naturalHeight !== 0) {
+        ctx.drawImage(playerSprite, player.x, player.y, player.width, player.height);
+    } else {
+        // Fallback: draw square
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
 }
 
 // Main Game Loop
@@ -124,7 +139,7 @@ function gameLoop() {
 // Start the engine
 gameLoop();
 
-// Handle window resize
+// Handle window resize dynamically
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
