@@ -3,128 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Official website for our upcoming indie game." />
-
-  <title>PROJECT: NULL | Indie Game</title>
-
+  <title>Playable Indie Site</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="scanlines"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <span class="brand__mark">[X]</span>
-        <div class="brand__text">
-          <span class="brand__title">STUDIO_NAME</span>
-        </div>
-      </div>
+  <canvas id="gameCanvas"></canvas>
 
-      <nav class="nav">
-        <a href="#about">ABOUT</a>
-        <a href="#media">MEDIA</a>
-        <a href="#devlog">DEVLOG</a>
-        <a class="btn btn--ghost" href="#wishlist">WISHLIST</a>
-      </nav>
+  <div id="ui-layer" class="hidden">
+    <div class="dialog-box">
+      <h2 id="dialog-title">TITLE</h2>
+      <p id="dialog-text">Information goes here...</p>
+      <p class="blink hint">> Press [SPACE] to close <</p>
     </div>
-  </header>
+  </div>
 
-  <main id="main">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">> SYSTEM.BOOT(OK)</p>
-          <h1>PROJECT:<br><span class="highlight">NULL</span></h1>
-          <p class="lede">
-            A brutal, pixel-perfect roguelike where your only weapon is momentum.
-            Coming Q4 2026 to Steam and Itch.io.
-          </p>
+  <div id="controls-hint">WASD/ARROWS: Move | SPACE: Interact</div>
 
-          <div class="hero-cta">
-            <a class="btn" href="#wishlist">PLAY WEB DEMO</a>
-            <a class="btn btn--alt" href="#devlog">READ DEVLOG</a>
-          </div>
-        </div>
-
-        <div class="hero-art">
-          <div class="gif-placeholder">
-            <p>[INSERT GAMEPLAY GIF HERE]</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>CORE_MECHANICS</h2>
-        </div>
-
-        <div class="grid grid--3">
-          <article class="pixel-box">
-            <h3>ONE HIT KILL</h3>
-            <p>No health bars. No second chances. Master the dodge roll or die trying.</p>
-          </article>
-
-          <article class="pixel-box">
-            <h3>PROCEDURAL</h3>
-            <p>The labyrinth shifts every run. Memorize patterns, not maps.</p>
-          </article>
-
-          <article class="pixel-box">
-            <h3>CRUNCHY AUDIO</h3>
-            <p>A heavy synthwave soundtrack accompanied by bone-rattling 8-bit sound effects.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="devlog" class="section section--alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>DEV_LOG</h2>
-        </div>
-
-        <div class="timeline">
-          <article class="post">
-            <div class="post-date">v0.0.3 // RECENT</div>
-            <h3>Added Hit-Stop Mechanics</h3>
-            <p>Implemented a 4-frame freeze on heavy impacts to make the combat feel chunkier. Also fixed that weird collision bug with the slimes.</p>
-          </article>
-
-          <article class="post">
-            <div class="post-date">v0.0.2 // ARCHIVE</div>
-            <h3>First Playable Build</h3>
-            <p>Basic movement and dashing are in. The camera still makes people dizzy, working on smoothing that out next week.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="wishlist" class="section">
-      <div class="container">
-        <div class="pixel-box text-center">
-          <h2>SUPPORT THE DEV</h2>
-          <p>This game is being built solo in Godot. Drop a follow or wishlist to help the algorithm notice me.</p>
-          <div class="hero-cta justify-center">
-            <a class="btn" href="#">STEAM PAGE</a>
-            <a class="btn btn--alt" href="https://github.com/FadhilJfr" target="_blank">GITHUB</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container text-center">
-      <p>PRESS START TO CONTINUE.</p>
-      <p class="muted">© 2026 STUDIO_NAME.</p>
-    </div>
-  </footer>
+  <script src="game.js"></script>
 </body>
 </html>
